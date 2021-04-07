@@ -1,8 +1,9 @@
 package ru.netology.service;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 
 public class CashbackHackServiceTest {
@@ -10,9 +11,10 @@ public class CashbackHackServiceTest {
 
     @Test
     public void shouldRemainEqualBoundary4() {
-        int amount = 1000;
+        int actual = service.remain(900);
+        int expected = 100;
 
-        assertEquals(0,service.remain(amount));
+        assertEquals(expected,actual);
 
     }
     @Test
@@ -41,29 +43,27 @@ public class CashbackHackServiceTest {
     public void shouldRemainEqualBoundary() {
         int amount = 1000;
 
-        assertEquals(0,service.remain(amount));
-
-    }
-    @Test
-    public void shouldRemainMoreBoundary() {
-        int amount = 1500;
-
-        assertEquals(500,service.remain(amount));
-
-    }
-    @Test
-    public void shouldRemainAmountEqual0() {
-        int amount = 0;
-
         assertEquals(1000,service.remain(amount));
 
     }
-    @Test
+    @org.junit.jupiter.api.Test
+    public void shouldRemainMoreBoundary() {
+        int amount = 1500;
+
+        Assertions.assertEquals(500,service.remain(amount));
+    }
+
+    @org.junit.jupiter.api.Test
+    public void shouldRemainAmountEqual0() {
+        int amount = 0;
+
+        Assertions.assertEquals(1000,service.remain(amount));
+
+    }
+    @org.junit.jupiter.api.Test
     public void shouldRemainBeforeBoundary() {
         int amount = 600;
 
-        assertEquals(400,service.remain(amount));
-
-
+        Assertions.assertEquals(400,service.remain(amount));
     }
 }
