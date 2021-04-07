@@ -5,21 +5,19 @@ plugins {
 group 'ru.netology'
 version '1.0-SNAPSHOT'
 
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.1'
+
+    testImplementation 'junit:junit:4.13'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.6.2'
 }
 
 test {
     useJUnitPlatform()
-}
-
-tasks.register("runOnGitHub") { // 1
-    dependsOn(":app:lint", ":app:testDebugUnitTest")  // 2 ==> CUSTOMIZE THIS LINE
-    group = "custom"      // 3
-    description = "\$5" "./gradlew runOnGitHub # runs on GitHub Action" //3
 }
